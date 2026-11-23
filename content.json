@@ -1,0 +1,152 @@
+{
+  "_lisez-moi": "Seul fichier à modifier pour changer les textes, photos et vidéos. Garde les guillemets et les virgules. Photos : un lien (https://…) ou un fichier du dossier media/. Vidéos : un fichier .mp4 ou un lien YouTube / Vimeo / Google Drive. Voir README.md pour le détail.",
+
+  "site": {
+    "documentTitle": "Pour toi — un petit carnet",
+    "eyebrow": "Édition spéciale",
+    "issue": "N° 1",
+    "date": "Novembre 2026",
+    "title": "Pour toi, *tout doucement*",
+    "subtitle": "un carnet de petites choses qui comptent",
+    "intro": "Il n'y a pas de bon ordre pour le lire. Ouvre un tiroir, retourne une enveloppe, regarde-toi dans le miroir : chaque objet garde un souvenir, et je les ai tous rangés ici pour toi.",
+    "hint": "touche les objets — ils gardent des secrets",
+    "footer": "écrit à la main, rien que pour toi",
+    "updated": "22 novembre 2026"
+  },
+
+  "sections": {
+    "letters": {
+      "kicker": "Rubrique n° 2",
+      "title": "Mots *&* Lettres",
+      "deck": "Ce que je n'ai pas toujours su dire à voix haute, posé ici sur du papier ligné."
+    },
+    "film": {
+      "kicker": "Rubrique n° 3",
+      "title": "La *pellicule*",
+      "deck": "Tous les instants rangés au même endroit. Touche-en un pour le rouvrir."
+    }
+  },
+
+  "objects": [
+    { "type": "book",    "label": "notre livre",      "memory": "premier-livre" },
+    { "type": "letter",  "label": "une lettre",       "memory": "lettre-cachetee" },
+    { "type": "mirror",  "label": "le miroir",        "memory": "miroir" },
+    { "type": "jewel",   "label": "la promesse",      "memory": "bijou" },
+    { "type": "plush",   "label": "le doudou",        "memory": "doudou" },
+    { "type": "drawer",  "label": "le tiroir secret", "memory": "tiroir" },
+    { "type": "flowers", "label": "les fleurs",       "memory": "fleurs" }
+  ],
+
+  "notes": [
+    { "text": "touche tout ce qui bouge", "tone": "yellow" },
+    { "text": "le jour où tout a commencé", "tone": "rose", "memory": "premier-livre" },
+    { "text": "toi + moi = ♡", "tone": "white" }
+  ],
+
+  "letters": [
+    {
+      "id": "avant-toute-chose",
+      "title": "Avant toute *chose*",
+      "date": "22 novembre",
+      "to": "Pour toi,",
+      "tone": "cream",
+      "margin": ["à lire lentement", "(oui, tu as le droit de sourire)"],
+      "text": "Je ne sais pas toujours très bien dire les choses en face. Alors j'ai fait un carnet : un endroit où ranger ce qui compte, un rire, une odeur de pluie, ==ta façon de dire mon prénom==.\n\nSi tu veux savoir par où tout a commencé, tourne [[premier-livre|la première page]]. Et si tu préfères les secrets, le tiroir n'est jamais complètement fermé.",
+      "sign": "— moi"
+    },
+    {
+      "id": "petites-listes",
+      "title": "Petites listes de *bonheur*",
+      "date": "Un dimanche",
+      "to": "",
+      "tone": "yellow",
+      "margin": ["liste non exhaustive"],
+      "text": "Le premier café quand il fait encore nuit.\nLes fous rires qui font mal aux joues.\nLes messages qui arrivent juste au bon moment.\nTes mains qui trouvent toujours les miennes sans regarder.\n\nEt puis ==toutes les choses qu'on n'a pas encore faites==, qui attendent sagement leur tour dans [[tiroir|le tiroir]].",
+      "sign": "— à compléter ensemble"
+    },
+    {
+      "id": "jours-gris",
+      "title": "Pour les jours *gris*",
+      "date": "Quand il pleut",
+      "to": "Mon cœur,",
+      "tone": "rose",
+      "margin": ["à garder dans la poche", "relis ce passage deux fois"],
+      "text": "Les jours où tout pèse un peu trop, ouvre ce carnet. Tu n'as rien à prouver ici, rien à expliquer.\n\n==Tu es aimé·e, tout simplement==, comme les fleurs qu'on offre sans raison, comme [[doudou|ce vieux doudou]] qu'on garde toute une vie.",
+      "sign": "— pour toujours, ou presque"
+    }
+  ],
+
+  "memories": [
+    {
+      "id": "premier-livre",
+      "title": "Le livre qu'on s'est *prêté*",
+      "date": "Un soir de septembre",
+      "caption": "page un",
+      "photo": "",
+      "video": "",
+      "alt": "Un livre posé sur une table",
+      "text": "C'est un livre que tu m'as prêté « pour quelques jours ». Il est resté des mois sur mon étagère, et je crois que nous savions tous les deux pourquoi.\n\nOn y a glissé des marque-pages, des notes en marge, et ==une feuille séchée== que je n'ai jamais voulu enlever.",
+      "sign": "— la première page"
+    },
+    {
+      "id": "lettre-cachetee",
+      "title": "La lettre que je n'ai pas *envoyée*",
+      "date": "Hiver",
+      "caption": "sous le sceau",
+      "photo": "",
+      "video": "",
+      "text": "Je l'ai écrite trois fois, déchirée deux, et finalement scellée avec un peu de cire rose.\n\nElle disait simplement : ==merci d'exister==. Le reste n'était que des ratures.",
+      "sign": "— cachetée avec soin"
+    },
+    {
+      "id": "miroir",
+      "title": "Ce que le miroir ne dit *pas*",
+      "date": "Un matin pressé",
+      "caption": "reflet",
+      "photo": "",
+      "video": "",
+      "text": "Regarde-toi un instant comme je te regarde : avec ce petit éclat dans les yeux que tu ne remarques jamais.\n\nLe miroir te montre un visage. Moi je vois ==toute la lumière qui va avec==.",
+      "sign": "— vu d'ici"
+    },
+    {
+      "id": "bijou",
+      "title": "Une promesse *minuscule*",
+      "date": "Un 14 février",
+      "caption": "trois fois rien",
+      "photo": "",
+      "video": "",
+      "text": "Ce n'est pas le bijou le plus précieux du monde. Mais il brille un peu quand on le regarde longtemps, comme certaines promesses.\n\nGarde-le près de toi, pour les jours où il faut se souvenir ==qu'on tient ensemble==.",
+      "sign": "— pour de vrai"
+    },
+    {
+      "id": "doudou",
+      "title": "Le doudou qui sait *tout*",
+      "date": "Depuis toujours",
+      "caption": "gardien des secrets",
+      "photo": "",
+      "video": "",
+      "text": "Il a vu les chagrins, les fous rires, les déménagements et les nuits blanches. Il ne dit rien, il écoute.\n\nSi un jour tu doutes, demande-lui : il te répondra ==que tout va bien se passer==.",
+      "sign": "— signé : le doudou"
+    },
+    {
+      "id": "tiroir",
+      "title": "Le tiroir des *petites choses*",
+      "date": "Un peu de tout",
+      "caption": "au fond du tiroir",
+      "photo": "",
+      "video": "",
+      "text": "Des tickets de cinéma, des cailloux, un mot griffonné sur un coin de nappe, une photo floue qu'on n'a jamais jetée.\n\nCe sont les choses qui ne valent rien et ==valent tout==.",
+      "sign": "— à ouvrir sans bruit"
+    },
+    {
+      "id": "fleurs",
+      "title": "Les fleurs du *marché*",
+      "date": "Un samedi de printemps",
+      "caption": "sans raison",
+      "photo": "",
+      "video": "",
+      "text": "Je les ai achetées parce qu'elles ressemblaient à ton rire. Elles n'ont pas duré longtemps, mais je me souviens encore de leur odeur dans la cuisine.\n\n==On n'a pas besoin d'occasion pour offrir des fleurs.==",
+      "sign": "— sans occasion"
+    }
+  ]
+}

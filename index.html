@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Un petit carnet pour toi</title>
+  <meta name="description" content="Un carnet de souvenirs, rien que pour toi.">
+  <meta name="theme-color" content="#f4ebdb">
+
+  <!-- Polices : serif éditoriale, écriture manuscrite, sans-serif fine -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- GSAP (animations) — chargé depuis un CDN, aucune installation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <!-- Le reste du code (modules ES) s'exécute après GSAP -->
+  <script type="module" src="app.js"></script>
+</head>
+
+<body>
+  <!-- Décor fixe en parallaxe : doodles dessinés à la main -->
+  <div class="bg" aria-hidden="true">
+    <svg class="deco deco--flower" data-speed="0.06" viewBox="0 0 120 120" fill="none" stroke="#dd9aa3" stroke-width="1.5" stroke-linecap="round">
+      <circle cx="60" cy="60" r="9"/>
+      <ellipse cx="60" cy="32" rx="10" ry="19"/>
+      <ellipse cx="60" cy="32" rx="10" ry="19" transform="rotate(60 60 60)"/>
+      <ellipse cx="60" cy="32" rx="10" ry="19" transform="rotate(120 60 60)"/>
+      <ellipse cx="60" cy="32" rx="10" ry="19" transform="rotate(180 60 60)"/>
+      <ellipse cx="60" cy="32" rx="10" ry="19" transform="rotate(240 60 60)"/>
+      <ellipse cx="60" cy="32" rx="10" ry="19" transform="rotate(300 60 60)"/>
+    </svg>
+    <svg class="deco deco--squiggle" data-speed="0.14" viewBox="0 0 130 40" fill="none" stroke="#ecd06f" stroke-width="2.2" stroke-linecap="round">
+      <path d="M5 22q15-22 30 0t30 0 30 0 30 0"/>
+    </svg>
+    <svg class="deco deco--stars" data-speed="0.1" viewBox="0 0 120 80" fill="none" stroke="#c9808a" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M30 10q2 18 18 20-16 2-18 20-2-18-18-20 16-2 18-20z"/>
+      <path d="M86 40q1.5 12 12 13.5-10.5 1.5-12 12.5-1.5-11-12-12.5 10.5-1.5 12-13.5z"/>
+      <path d="M100 8q1 7 7 8-6 1-7 8-1-7-7-8 6-1 7-8z"/>
+    </svg>
+    <svg class="deco deco--leaf" data-speed="0.18" viewBox="0 0 90 150" fill="none" stroke="#8fae7e" stroke-width="1.5" stroke-linecap="round">
+      <path d="M45 148C44 100 46 50 50 6"/>
+      <path d="M45 120q-26-4-30-28 26 2 30 28zM46 86q24-4 28-26-24 2-28 26zM47 52q-20-4-24-22 20 2 24 22z"/>
+    </svg>
+    <svg class="deco deco--heart" data-speed="0.08" viewBox="0 0 80 72" fill="none" stroke="#dd9aa3" stroke-width="1.6" stroke-linecap="round">
+      <path d="M40 66C16 48 6 34 12 20c5-12 22-12 28 2 6-14 23-14 28-2 6 14-4 28-28 46z"/>
+      <path d="M26 24q4-6 10-4" opacity=".7"/>
+    </svg>
+    <svg class="deco deco--circle" data-speed="0.12" viewBox="0 0 100 100" fill="none" stroke="#ecd06f" stroke-width="1.5" stroke-dasharray="3 6" stroke-linecap="round">
+      <circle cx="50" cy="50" r="42"/>
+    </svg>
+  </div>
+
+  <!-- Écran d'attente le temps de lire content.json -->
+  <div class="loader" id="loader" role="status" aria-live="polite">
+    <div class="loader__inner">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z"/></svg>
+      <p>on déplie le carnet…</p>
+    </div>
+  </div>
+
+  <!-- Les trois « vues » du carnet (remplies par app.js à partir de content.json) -->
+  <main id="app">
+    <section class="view" id="view-table" aria-label="La table des souvenirs" hidden></section>
+    <section class="view" id="view-lettres" aria-label="Mots et lettres" hidden></section>
+    <section class="view" id="view-pellicule" aria-label="La pellicule" hidden></section>
+  </main>
+
+  <!-- Navigation : une petite pilule flottante, facile à atteindre au pouce -->
+  <nav class="dock" aria-label="Navigation du carnet">
+    <a href="#table" data-view="table">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M12 16.5c-3.6-2.2-4.8-3.8-4-5.5.7-1.5 2.7-1.5 4 .3 1.3-1.8 3.3-1.8 4-.3.8 1.7-.4 3.3-4 5.5z"/></svg>
+      <span>La table</span>
+    </a>
+    <a href="#lettres" data-view="lettres">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+      <span>Lettres</span>
+      <i class="dot" hidden></i>
+    </a>
+    <a href="#pellicule" data-view="pellicule">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="3.5" width="15" height="17" rx="1.5"/><rect x="7" y="6" width="10" height="9" rx=".5"/></svg>
+      <span>Pellicule</span>
+      <i class="dot" hidden></i>
+    </a>
+  </nav>
+
+  <!-- Rideau de transition entre les vues -->
+  <div class="curtain" id="curtain" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z"/></svg>
+  </div>
+
+  <!-- Modale « souvenir » : polaroid (photo / vidéo) + texte -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <article class="memory" id="memory">
+      <button type="button" class="memory__close" data-close aria-label="Fermer le souvenir">×</button>
+
+      <div class="memory__polaroid">
+        <span class="tape tape--top tape--stripe"></span>
+        <div class="memory__frame">
+          <div class="memory__media" id="m-media"></div>
+        </div>
+        <div class="memory__tabs" id="m-tabs" role="tablist" aria-label="Photo ou vidéo"></div>
+        <p class="memory__caption" id="m-caption"></p>
+      </div>
+
+      <div class="memory__text">
+        <p class="memory__date" id="m-date"></p>
+        <h2 class="memory__title" id="m-title"></h2>
+        <div class="memory__body" id="m-body"></div>
+        <p class="memory__sign" id="m-sign"></p>
+        <div class="memory__nav">
+          <button type="button" id="m-prev" aria-label="Souvenir précédent">←</button>
+          <span id="m-count" aria-live="polite"></span>
+          <button type="button" id="m-next" aria-label="Souvenir suivant">→</button>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Calque des particules (cœurs, étincelles) -->
+  <div id="fx" aria-hidden="true"></div>
+
+  <noscript>
+    <p style="position:fixed;inset:0;display:grid;place-items:center;background:#f4ebdb;font:22px Georgia,serif;text-align:center;padding:24px;z-index:9999">
+      Ce carnet a besoin de JavaScript pour s'ouvrir. ✿
+    </p>
+  </noscript>
+</body>
+</html>
